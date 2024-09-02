@@ -7,15 +7,15 @@
   "homepage": "./",
   "version": "0.0.1b",
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt generate && electron-builder --win",
     "dev": "nuxt dev",
-    "build:win": "nuxt generate && electron-builder --win",
-    "build:mac": "nuxt build --prerender && electron-builder",
+    "publish": "electron-forge publish",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@electron-forge/publisher-github": "^7.4.0",
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@primevue/nuxt-module": "^4.0.5",
@@ -33,7 +33,8 @@
     "primeicons": "^7.0.0",
     "primevue": "^4.0.5",
     "sass": "^1.77.8",
-    "tailwindcss-primeui": "^0.3.4"
+    "tailwindcss-primeui": "^0.3.4",
+    "update-electron-app": "^3.0.0"
   },
   "prisma": {
     "schema": "server/prisma/schema.prisma"
