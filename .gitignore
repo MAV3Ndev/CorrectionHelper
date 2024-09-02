@@ -5,7 +5,8 @@
 .nitro
 .cache
 dist
-dist-electron
+dist-electron/main.js
+dist-electron/preload.js
 release
 
 # Node dependencies
