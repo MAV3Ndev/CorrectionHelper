@@ -1,75 +1,24 @@
-# Nuxt UI Minimal Starter
+# CorrectionHelper
 
-Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.
+ 某予備校の採点業務を円滑にすることを目的として作成されたソフトウェア
 
-## Setup
+## 機能
 
-Make sure to install the dependencies:
+- グローバルスニペット
+- 各大学の年度/大問ごとのスニペット
 
-```bash
-# npm
-npm install
+## 用法
 
-# pnpm
-pnpm install
+[ここ](https://github.com/MAV3Ndev/CorrectionHelper/releases)から最新のバージョンを選択、.exeファイルをダウンロードしてインストール
+あるいは自分でビルドしても良い
 
-# yarn
-yarn install
+## 技術
 
-# bun
-bun install
-```
+- Nuxt3
+- PrimeVue
+- Electron
 
-## Development Server
+## 免責
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+このソフトウェアは開発者がElectron及びPrimeVueの学習目的で作成したものであり、いかなる可用性についても保証しないよ
+某予備校は開発業務に招待してください
