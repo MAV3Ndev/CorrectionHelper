@@ -1,0 +1,41 @@
+{
+  "name": "correctionhelper",
+  "productName": "CorrectionHelper",
+  "author": "MAV3Ndev",
+  "private": true,
+  "main": "dist-electron/main.js",
+  "homepage": "./",
+  "version": "0.0.1b",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "build:win": "nuxt generate && electron-builder --win",
+    "build:mac": "nuxt build --prerender && electron-builder",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@primevue/nuxt-module": "^4.0.5",
+    "electron": "^32.0.1",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2",
+    "nuxt": "^3.12.4",
+    "nuxt-electron": "^0.7.0",
+    "vite-plugin-electron": "^0.28.7",
+    "vite-plugin-electron-renderer": "^0.14.5"
+  },
+  "dependencies": {
+    "electron-store": "^10.0.0",
+    "electron-updater": "^6.2.1",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.0.5",
+    "sass": "^1.77.8",
+    "tailwindcss-primeui": "^0.3.4"
+  },
+  "prisma": {
+    "schema": "server/prisma/schema.prisma"
+  }
+}
