@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import Store from "electron-store";
 import path from "node:path";
+import { updateElectronApp } from 'update-electron-app';
 
 process.env.APP_ROOT = path.join(__dirname, '..')
 
@@ -13,7 +14,7 @@ process.env.VITE_PUBLIC = process.env.VITE_DEV_SERVER_URL
 
 const store = new Store();
 
-console.log(store.path);
+updateElectronApp()
 
 let win
 const createWindow = () => {
