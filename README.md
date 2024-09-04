@@ -1,75 +1,43 @@
-# Nuxt UI Minimal Starter
+# CorrectionHelper
 
-Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.
+ 某予備校の採点業務を円滑にすることを目的として作成されたソフトウェア
 
-## Setup
+## 機能
 
-Make sure to install the dependencies:
+- グローバルスニペット
+- 各大学の年度/大問ごとのスニペット
 
-```bash
-# npm
-npm install
+### Todo(近日実装予定の機能)
 
-# pnpm
-pnpm install
+- スニペット編集機能
+- 各問題採点基準・得点をメモできるようにする
+- スニペットの自動保存
+- Electronの設定をいいかんじに
 
-# yarn
-yarn install
+## 用法
 
-# bun
-bun install
-```
+[ここ](https://github.com/MAV3Ndev/CorrectionHelper/releases)から最新のバージョンを選択、.exeファイルをダウンロードしてインストール
+その後CorrectionHelperを起動すると使えます
+Macユーザーの方は下記の連絡先に文句を言うことで状況が改善する可能性があります
+あるいは自分でビルドしても良い
 
-## Development Server
+![選択画面](https://github.com/user-attachments/assets/d1acd4a0-dc6e-474a-a3c0-acbb7c6f6108)
 
-Start the development server on `http://localhost:3000`:
+![スニペット画面](https://github.com/user-attachments/assets/141669f3-b240-448a-91dc-f68c32ae84cc)
 
-```bash
-# npm
-npm run dev
+![グローバルスニペットはどこでも開ける](https://github.com/user-attachments/assets/f09e301c-69d9-4f08-ae1c-b7ad8786504a)
 
-# pnpm
-pnpm run dev
 
-# yarn
-yarn dev
+## 技術
 
-# bun
-bun run dev
-```
+- Nuxt3
+- PrimeVue
+- Electron
 
-## Production
+## 免責
 
-Build the application for production:
+このソフトウェアは開発者がElectron及びPrimeVueの学習目的で作成したものであり、いかなる可用性についても保証しないよ。
 
-```bash
-# npm
-npm run build
+## 連絡
 
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+機能追加のリクエストやその他問い合わせは[GitHubのIssue](https://github.com/MAV3Ndev/CorrectionHelper/issues/new)を通じて行うか、Discord: k_0_に連絡するか、[contact@ez1.cc](mailto:contact@ez1.cc)にメールするかのいずれかの手段を用いて行ってください。
