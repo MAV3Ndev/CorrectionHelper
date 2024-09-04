@@ -14,7 +14,12 @@ process.env.VITE_PUBLIC = process.env.VITE_DEV_SERVER_URL
 
 const store = new Store();
 
-updateElectronApp()
+
+if (process.env.VITE_DEV_SERVER_URL) {
+    console.log(store.path)
+} else {
+    updateElectronApp()
+}
 
 let win
 const createWindow = () => {
