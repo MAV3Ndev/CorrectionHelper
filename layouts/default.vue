@@ -1,6 +1,5 @@
 <script setup>
-const route = useRoute()
-const {univ, year, q} = route.params
+
 </script>
 
 <template>
