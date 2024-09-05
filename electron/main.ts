@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, Menu, ipcMain } from "electron";
 import Store from "electron-store";
 import path from "node:path";
 import { updateElectronApp } from 'update-electron-app';
@@ -20,6 +20,11 @@ if (process.env.VITE_DEV_SERVER_URL) {
 } else {
     updateElectronApp()
 }
+
+const template = Menu.buildFromTemplate([
+]);
+
+Menu.setApplicationMenu(template);
 
 let win
 const createWindow = () => {
@@ -63,4 +68,8 @@ ipcMain.handle('store:get', (event, key) => {
 
 ipcMain.handle('store:delete', (event, key) => {
     return store.delete(key);
+});
+
+ipcMain.handle('version', (event, key) => {
+    return app.getVersion();
 });
