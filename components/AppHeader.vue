@@ -4,6 +4,16 @@
     <Dialog style="width: 95vw" maximizable v-model:visible="global" header="共通スニペット" @hide="global = false">
       <SnippetCards storepath="Global"/>
     </Dialog>
+    <Popover ref="about">
+      <div class="flex flex-col gap-4">
+        <div>
+          CorrectionHelper
+        </div>
+        <div>
+          version: {{version}}
+        </div>
+      </div>
+    </Popover>
     <Toolbar class="m-1">
       <template #start>
         <Button icon="pi pi-home" text @click="navigateTo('/')"/>
@@ -13,7 +23,8 @@
 
       </template>
       <template #end>
-        <Button icon="pi pi-bars" outlined/>
+        <!--<Button icon="pi pi-bars" outlined/>-->
+        <Button icon="pi pi-info-circle" text @click="toggleAbout"/>
       </template>
     </Toolbar>
   </nav>
@@ -21,9 +32,22 @@
 
 <script setup>
 const global = ref(false)
+const about = ref()
+
+const version = ref()
+
+const toggleAbout = (event) => {
+  about.value.toggle(event)
+}
+
+onMounted(async () => {
+  version.value = await window.api.version()
+})
 </script>
 
 <style>
+
+
 @keyframes shrink-grow {
   0% {
     transform: scale(1);
