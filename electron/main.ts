@@ -59,6 +59,13 @@ app.whenReady().then(() => {
 let isUpdateAvailable = false
 let isUpdateReady = false
 
+let progressInfo = {
+    bytesPerSecond: 0,
+    percent: 0,
+    total: 0,
+    transferred: 0
+}
+
 autoUpdater.on('update-available', (info) => {
     isUpdateAvailable = true
 })
