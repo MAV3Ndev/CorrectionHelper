@@ -5,7 +5,7 @@
   "private": true,
   "main": "dist-electron/main.js",
   "homepage": "./",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "scripts": {
     "build": "nuxt generate && electron-builder --win",
     "dev": "nuxt dev",
