@@ -7,6 +7,7 @@ contextBridge.exposeInMainWorld('api', {
     version: () => ipcRenderer.invoke('version'),
     firstRun: () => ipcRenderer.invoke('firstrun'),
     updateProgress: () => ipcRenderer.invoke('update:progress'),
+    updateCheck: () => ipcRenderer.invoke('update:check'),
     updateDownload: () => ipcRenderer.invoke('update:download'),
     updateInstall: () => ipcRenderer.invoke('update:install'),
     updateAvailable: () => ipcRenderer.invoke('update:available'),

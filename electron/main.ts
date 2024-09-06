@@ -96,6 +96,13 @@ ipcMain.handle('update:progress', () => {
     return progressInfo;
 });
 
+ipcMain.handle('update:check', async () => {
+    const res = await fetch('https:///update.electronjs.org/MAV3Ndev/CorrectionHelper/win32/0.0.1/')
+    const data = await res.json()
+    console.log(data)
+    return data
+});
+
 ipcMain.handle('update:download', () => {
     autoUpdater.downloadUpdate()
 });
