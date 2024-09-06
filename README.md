@@ -16,8 +16,11 @@
 ## 用法
 
 [ここ](https://github.com/MAV3Ndev/CorrectionHelper/releases)から最新のバージョンを選択、.exeファイルをダウンロードしてインストール
+
 その後CorrectionHelperを起動すると使えます
+
 Macユーザーの方は下記の連絡先に文句を言うことで状況が改善する可能性があります
+
 あるいは自分でビルドしても良い
 
 ![選択画面](https://github.com/user-attachments/assets/d1acd4a0-dc6e-474a-a3c0-acbb7c6f6108)
