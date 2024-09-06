@@ -57,7 +57,8 @@ app.whenReady().then(() => {
 });
 
 let isUpdateAvailable = false
-let progressInfo = {}
+let isUpdateReady = false
+
 autoUpdater.on('update-available', (info) => {
     isUpdateAvailable = true
 })
@@ -66,8 +67,8 @@ autoUpdater.on('download-progress', (progress) => {
     progressInfo = progress
 })
 
-autoUpdater.on('update-downloaded', () => {
-    autoUpdater.quitAndInstall()
+autoUpdater.on('update-downloaded', (info) => {
+    isUpdateReady = true
 })
 
 ipcMain.handle('store:set', (event, key, value) => {
@@ -91,6 +92,7 @@ ipcMain.handle('firstrun', () => {
 });
 
 ipcMain.handle('update:progress', () => {
+    console.log(progressInfo)
     return progressInfo;
 });
 
@@ -99,4 +101,12 @@ ipcMain.handle('update:download', () => {
 });
 ipcMain.handle('update:install', () => {
     autoUpdater.quitAndInstall()
+});
+
+ipcMain.handle('update:available', () => {
+    return isUpdateAvailable;
+});
+
+ipcMain.handle('update:ready', () => {
+    return isUpdateReady;
 });
