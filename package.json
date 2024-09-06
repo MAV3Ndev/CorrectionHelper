@@ -30,6 +30,7 @@
   "dependencies": {
     "electron-store": "^10.0.0",
     "electron-updater": "^6.2.1",
+    "marked": "^14.1.1",
     "primeicons": "^7.0.0",
     "primevue": "^4.0.5",
     "sass": "^1.77.8",
