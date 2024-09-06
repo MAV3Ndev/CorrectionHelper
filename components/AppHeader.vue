@@ -73,7 +73,7 @@ async function downloadUpdate() {
   stage.value = 2
   function I() {setTimeout(async () => {
     progress.value = await window.api.updateProgress()
-    if (await window.api.updateReady()) {
+    if (await window.api.updateReady() || progress.value.transferred == progress.value.total) {
       stage.value = 3
     } else {
       I()
