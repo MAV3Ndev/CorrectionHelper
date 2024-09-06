@@ -65,7 +65,7 @@ let releaseInfo = {}
 
 onMounted(async () => {
   version.value = await window.api.version()
-  releaseInfo = useFetch(`https:///update.electronjs.org/MAV3Ndev/CorrectionHelper/win32/${version.value}`).data
+  releaseInfo = useFetch(`https:///update.electronjs.org/MAV3Ndev/CorrectionHelper/win32/0.0.1/`).data
 })
 
 async function downloadUpdate() {
