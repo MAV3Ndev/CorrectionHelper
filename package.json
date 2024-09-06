@@ -34,8 +34,7 @@
     "primeicons": "^7.0.0",
     "primevue": "^4.0.5",
     "sass": "^1.77.8",
-    "tailwindcss-primeui": "^0.3.4",
-    "update-electron-app": "^3.0.0"
+    "tailwindcss-primeui": "^0.3.4"
   },
   "repository": {
     "type": "git",
