@@ -1,7 +1,7 @@
 import { app, BrowserWindow, Menu, ipcMain } from "electron";
 import Store from "electron-store";
 import path from "node:path";
-import { updateElectronApp } from 'update-electron-app';
+import { autoUpdater } from "electron-updater"
 
 process.env.APP_ROOT = path.join(__dirname, '..')
 
@@ -14,17 +14,12 @@ process.env.VITE_PUBLIC = process.env.VITE_DEV_SERVER_URL
 
 const store = new Store();
 
-
-if (process.env.VITE_DEV_SERVER_URL) {
-    console.log(store.path)
-} else {
-    updateElectronApp()
-}
-
 const template = Menu.buildFromTemplate([
 ]);
 
 Menu.setApplicationMenu(template);
+
+autoUpdater.checkForUpdates()
 
 let win
 const createWindow = () => {
@@ -55,8 +50,25 @@ app.on("activate", () => {
 });
 
 app.whenReady().then(() => {
+    if (process.env.VITE_DEV_SERVER_URL) {
+        console.log(store.path)
+    }
     createWindow();
 });
+
+let isUpdateAvailable = false
+let progressInfo = {}
+autoUpdater.on('update-available', (info) => {
+    isUpdateAvailable = true
+})
+
+autoUpdater.on('download-progress', (progress) => {
+    progressInfo = progress
+})
+
+autoUpdater.on('update-downloaded', () => {
+    autoUpdater.quitAndInstall()
+})
 
 ipcMain.handle('store:set', (event, key, value) => {
     store.set(key, value);
@@ -70,6 +82,21 @@ ipcMain.handle('store:delete', (event, key) => {
     return store.delete(key);
 });
 
-ipcMain.handle('version', (event, key) => {
+ipcMain.handle('version', () => {
     return app.getVersion();
+});
+
+ipcMain.handle('firstrun', () => {
+    return store.get('firstrun');
+});
+
+ipcMain.handle('update:progress', () => {
+    return progressInfo;
+});
+
+ipcMain.handle('update:download', () => {
+    autoUpdater.downloadUpdate()
+});
+ipcMain.handle('update:install', () => {
+    autoUpdater.quitAndInstall()
 });
