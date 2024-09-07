@@ -24,7 +24,21 @@
       </template>
     </Dialog>
     <Drawer v-model:visible="drawer" header="メニュー">
+      <Panel header="履歴" toggleable>
+        <div v-if="!history.length">
+            履歴はありません
+        </div>
+        <div v-else v-for="(page,i) in history">
+          <Button :label="page.name" text class="w-full" @click="navigateTo(page.path)">
+          </Button>
+          <Divider v-if="i != history.length - 1"/>
+        </div>
+      </Panel>
       <template #footer>
+        <div class="m-3 flex">
+          <ToggleSwitch class="ml-1 mr-3" v-model="alwaysOnTop" @update:modelValue="switchAOT" />
+          <div>常に最前面に表示</div>
+        </div>
         <div class="m-3 text-center">
           <Button v-if="version != releaseInfo.name" class="w-full" label="更新が利用可能" outlined icon="pi pi-info-circle"
                   @click="updateDialog = !updateDialog"/>
@@ -49,24 +63,49 @@
 
 <script setup>
 import { marked } from "marked";
+const route = useRoute()
 
 const global = ref(false)
 const drawer = ref(false)
+
+const alwaysOnTop = ref(false)
 
 const updateDialog = ref(false)
 const stage = ref(1)
 
 const version = ref()
-const updateAvailable = ref(false)
-
-const progress = ref({})
 
 let releaseInfo = {}
 
+const progress = ref({})
+
+const history = ref([])
+
 onMounted(async () => {
+  history.value = await window.api.storeGet('History')
+  if (history.value === undefined) {
+    await window.api.storeSet('History', [])
+    history.value = []
+  }
   version.value = await window.api.version()
   releaseInfo = await window.api.updateCheck()
 })
+
+watch(
+    () => route.path,
+    () => {
+      if (history.value && route.path !== '/') {
+        if (!history.value.find((e) => e.path === route.path)) {
+          history.value.push({name: String(route.path).slice(1).replaceAll("/"," - "), path: route.path})
+          if (history.value.length > 10) {
+            history.value.shift()
+          }
+          window.api.storeSet('History', JSON.parse(JSON.stringify(history.value)))
+        }
+      }
+    },
+);
+
 
 async function downloadUpdate() {
   await window.api.updateDownload()
@@ -84,6 +123,10 @@ async function downloadUpdate() {
 
 async function installUpdate() {
   await window.api.updateInstall()
+}
+
+async function switchAOT(value) {
+  await window.api.setAlwaysOnTop(value)
 }
 
 function humanFileSize(bytes, si=false, dp=1) {

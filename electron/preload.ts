@@ -12,4 +12,5 @@ contextBridge.exposeInMainWorld('api', {
     updateInstall: () => ipcRenderer.invoke('update:install'),
     updateAvailable: () => ipcRenderer.invoke('update:available'),
     updateReady: () => ipcRenderer.invoke('update:ready'),
+    setAlwaysOnTop: (value:boolean) => ipcRenderer.invoke('aot', value),
 });

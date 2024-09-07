@@ -1,7 +1,7 @@
-import { app, BrowserWindow, Menu, ipcMain } from "electron";
+import {app, BrowserWindow, ipcMain, Menu} from "electron";
 import Store from "electron-store";
 import path from "node:path";
-import { autoUpdater } from "electron-updater"
+import {autoUpdater} from "electron-updater"
 
 process.env.APP_ROOT = path.join(__dirname, '..')
 
@@ -12,7 +12,13 @@ process.env.VITE_PUBLIC = process.env.VITE_DEV_SERVER_URL
     ? path.join(process.env.APP_ROOT, 'public')
     : RENDERER_DIST
 
-const store = new Store();
+const store = new Store({
+    defaults: {
+        University: {},
+        Global: {},
+        History: []
+    }
+});
 
 const template = Menu.buildFromTemplate([
 ]);
@@ -105,9 +111,7 @@ ipcMain.handle('update:progress', () => {
 
 ipcMain.handle('update:check', async () => {
     const res = await fetch('https:///update.electronjs.org/MAV3Ndev/CorrectionHelper/win32/0.0.1/')
-    const data = await res.json()
-    console.log(data)
-    return data
+    return await res.json()
 });
 
 ipcMain.handle('update:download', () => {
@@ -123,4 +127,8 @@ ipcMain.handle('update:available', () => {
 
 ipcMain.handle('update:ready', () => {
     return isUpdateReady;
+});
+
+ipcMain.handle('aot', (event, value) => {
+    win.setAlwaysOnTop(value, 'screen');
 });
