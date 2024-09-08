@@ -53,4 +53,4 @@ Macユーザーの方は下記の連絡先に文句を言うことで状況が�
 
 ## 連絡
 
-機能追加のリクエストやその他問い合わせは[GitHubのIssue](https://github.com/MAV3Ndev/CorrectionHelper/issues/new)を通じて行うか、Discord: k_0_に連絡するか、[contact@ez1.cc](mailto:contact@ez1.cc)にメールするかのいずれかの手段を用いて行ってください。
+機能追加のリクエストやその他問い合わせは[GitHubのIssue](https://github.com/MAV3Ndev/CorrectionHelper/issues/new)を通じて行うか、Discord: k_0_に連絡するか、[contact@ez1.cc](mailto:contact@ez1.cc)にメールするかのいずれかの手段を用いて行ってください。Slackで連絡可能であればそれでもよいです
